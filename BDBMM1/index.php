@@ -4,7 +4,7 @@
     </head>
     <body>
         <form action="logowanie.php" method="post">
-            ZALOGUJ SIEM<br>
+            Zaloguj się<br>
             LOGIN <input type="text" name="nazwa_uzytkownika"><br>
             HASLO<input type="password" name="haslo"><br>
             <input type="submit" value="LOGIN"><br>
