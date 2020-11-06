@@ -16,19 +16,28 @@ class Uzytkownik{
         $conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
         if($conn->connect_errno!=0){
-            echo "blad";
-            header("Location: index.php");//nie laczy z baza
+            header("Location: rejestracja.php?alert=4");//nie laczy z baza
         }
         else{
-            $sql="INSERT INTO uzytkownik (typ_uzytkownika, id_uzytkownika, nazwa_uzytkownika, haslo, czy_usuniety) VALUES ('".$typ_uzytkownika."', '".$id_uzytkownika."', '".$nazwa_uzytkownika."', '".$haslo."', '".$czy_usuniety."');";
-            if($conn->query($sql) === TRUE){
-                //$result->close();
-                echo "dziala";
-                header("Location: index.php");//uzyszkodnik utworzony
+            $sql0 = "SELECT * FROM uzytkownik WHERE nazwa_uzytkownika='".$nazwa_uzytkownika."';";
+            if($result = @$conn->query($sql0)){
+                $users = $result->num_rows;
+                if($users>0){
+                    $result->close();
+                    header("Location: rejestracja.php?alert=6");//istnieje juz taki uzytkownik
+                }
+                else{
+                    $sql="INSERT INTO uzytkownik (typ_uzytkownika, id_uzytkownika, nazwa_uzytkownika, haslo, czy_usuniety) VALUES ('".$typ_uzytkownika."', '".$id_uzytkownika."', '".$nazwa_uzytkownika."', '".$haslo."', '".$czy_usuniety."');";
+                    if($conn->query($sql) === TRUE){
+                        header("Location: index.php?alert=5");//uzytkownik utworzony
+                    }
+                    else{
+                        header("Location: rejestracja.php?alert=3");//blad obslugi zapytania
+                    }
+                }
             }
             else{
-                echo "blad zapytania";
-                header("Location: rejestracja.php");//blad obslugi zapytania
+                header("Location: rejestracja.php?alert=3");//blad obslugi zapytania
             }
             $conn->close();
         }
@@ -39,22 +48,38 @@ class Uzytkownik{
         $this->haslo = $haslo;
         
         $conn = @new mysqli($host, $db_user, $db_password, $db_name);
+        
         if($conn->connect_errno!=0){
-            echo "blad";
-            header("Location: index.php");//nie laczy z baza
+            header("Location: index.php?alert=4");//nie laczy z baza
         }
         else{
-            $sql="UPDATE uzytkownik SET czy_usuniety = '1' WHERE uzytkownik.nazwa_uzytkownika = '".$nazwa_uzytkownika."' AND uzytkownik.haslo = '".$haslo."';";
-            if($conn->query($sql) === TRUE){
-                //$result->close();
-                echo "konto usuniete";
-                header("Location: wylogowywanie.php");
+            $sql0 = "SELECT * FROM uzytkownik WHERE uzytkownik.nazwa_uzytkownika='".$nazwa_uzytkownika."' AND uzytkownik.haslo='".$haslo."';";
+            if($result = @$conn->query($sql0)){
+                $users = $result->num_rows;
+                if($users>0){
+                    $result->close();
+                    $sql="UPDATE uzytkownik SET czy_usuniety = '1' WHERE uzytkownik.nazwa_uzytkownika = '".$nazwa_uzytkownika."' AND uzytkownik.haslo = '".$haslo."';";
+                    if($conn->query($sql) === TRUE){
+                        session_start();
+                        session_unset();
+                        session_destroy();
+                        header("Location: index.php?alert=2");
+                    }
+                    else{
+                        session_start();
+                        session_unset();
+                        session_destroy();
+                        header("Location: index.php?alert=3");
+                    }
+                $conn->close();
+                }
+                else{
+                    session_start();
+                    session_unset();
+                    session_destroy();
+                    header("Location: index.php?alert=1");
+                }
             }
-            else{
-                echo "blad zapytania";
-                header("Location: wylogowywanie.php");
-            }
-            $conn->close();
         }
     }
     public function Logowanie($nazwa_uzytkownika, $haslo){
@@ -63,7 +88,7 @@ class Uzytkownik{
 
             if($conn->connect_errno!=0){
                 echo "blad";
-                header("Location: index.php");//nie laczy z baza
+                header("Location: index.php?alert=4");//nie laczy z baza
             }
             else{
                 $sql = "SELECT * FROM uzytkownik WHERE nazwa_uzytkownika='".$nazwa_uzytkownika."' AND haslo='".$haslo."';";
@@ -78,30 +103,30 @@ class Uzytkownik{
                             $result->close();
 
                             if($row['typ_uzytkownika']=='petent'){
-                                header("Location: petent.php");//uzyszkodnik aktywny, nastapilo zalogowanie
+                                header("Location: petent.php");//uzytkownik aktywny, nastapilo zalogowanie
                             }
                             else if($row['typ_uzytkownika']=='administrator'){
-                                header("Location: administrator.php");//uzyszkodnik aktywny, nastapilo zalogowanie
+                                header("Location: administrator.php");//uzytkownik aktywny, nastapilo zalogowanie
                             }
                             else if($row['typ_uzytkownika']=='kierownik'){
-                                header("Location: kierownik.php");//uzyszkodnik aktywny, nastapilo zalogowanie
+                                header("Location: kierownik.php");//uzytkownik aktywny, nastapilo zalogowanie
                             }
                             else if($row['typ_uzytkownika']=='asystent'){
-                                header("Location: asystent.php");//uzyszkodnik aktywny, nastapilo zalogowanie
+                                header("Location: asystent.php");//uzytkownik aktywny, nastapilo zalogowanie
                             }
 
                         }
                         else{
-                            header("Location: index.php");//uzyszkodnik usuniety
+                            header("Location: index.php?alert=2");//uzytkownik usuniety
                         }
                         $result->close();
                     }
                     else{
-                        header("Location: index.php?alert=1");//nie znaleziono uzyszkodnika
+                        header("Location: index.php?alert=1");//nie znaleziono uzytkownika 
                     }
                 }
                 else{
-                    header("Location: index.php");//blad obslugi zapytania
+                    header("Location: index.php?alert=3");//blad obslugi zapytania
                 }
                 $conn->close();
             }

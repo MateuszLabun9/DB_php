@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SESSION['typ_uzytkownika']!='petent'){
     session_unset();
     session_destroy();
-    header("Location: index.php");
+    header("Location: index.php?alert=1");
 }
 ?>
 <!doctype html>
@@ -24,7 +24,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
             <!-- zawartość strony sam tekst --> 
                 <p class="test"> Tutaj znajduje się lista podań do zweryfikowania:</p>
                                 <br>
-                
+                <!-- WYWALIĆ TE INPUTY Z ODNOŚNIKÓW TO JEST USELESS!!!!!!! DO IT EXACTLY LIKE petent.php!!!!!!!! TEN ECHO TEŻ USELESS -->
                 <?php echo '<a  href="wylogowywanie.php" style="text-decoration: none; "> <input  type="submit" style="width: 10%; position:absolute; left: 80%; top: 40%; font-size: 15px; padding: 1%;" value="Wyloguj"> </a>'
     ;?>
                   

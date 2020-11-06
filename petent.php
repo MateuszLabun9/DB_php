@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SESSION['typ_uzytkownika']!='petent'){
     session_unset();
     session_destroy();
-    header("Location: index.php");
+    header("Location: index.php?alert=1");
 }
 ?>
 <!doctype html>
@@ -35,8 +35,8 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                 <p class="test"> Aby kontynuować naciśnij przycisk “Dalej”. </p>
                 <a class="przycisk" href="wyksztalcenie.php">DALEJ</a> 
                 <br>
-                <a class="przycisk"  href="usunuzytkownika.php" style=" width: 10%; position:absolute; left: 80%; top: 60%; font-size: 15px; padding: 1%;">Usuń użytkownika</a><!--POPRAW STYL BO SIĘ ROZJEŻDŻA PRZY ZMIANIE ROZDZIELCZOŚCI, https://www.w3schools.com/cssref/pr_class_float.asp-->
-                <a class="przycisk"  href="wylogowywanie.php" style=" width: 10%; position:absolute; left: 80%; top: 66%; font-size: 15px; padding: 1%;">Wyloguj</a>
+                <a class="przycisk"  href="usunuzytkownika.php" style=" width: 10%; position:absolute; left: 80%; top: 60%; font-size: 15px; padding: 1%;">Usuń użytkownika</a><!--POPRAW FLOATY BO SIĘ ROZJEŻDŻA PRZY ZMIANIE ROZDZIELCZOŚCI, https://www.w3schools.com/cssref/pr_class_float.asp-->
+                <a class="przycisk"  href="wylogowywanie.php" style="width: 10%; position:absolute; left: 80%; top: 66%; font-size: 15px; padding: 1%;">Wyloguj</a>
                 
                   
             </div>

@@ -20,6 +20,7 @@
         
         </form>
                <a href=umiejetnosci.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>    
+         <!-- WYWALIĆ TE INPUTY Z ODNOŚNIKÓW TO JEST USELESS!!!!!!! DO IT EXACTLY LIKE petent.php!!!!!!!! -->
         </div>
     </body>
 </html>

@@ -29,9 +29,27 @@
             <?php
             
             if(isset($_GET['alert'])){
-                if($_GET['alert']==1) echo "<p>Proszę poprawnie uzupełnić dane logowania!</p>";
+                switch($_GET['alert']){
+                    case 1:
+                        echo "<p>Proszę poprawnie uzupełnić dane logowania!</p>";
+                        break;
+                    case 2:
+                        echo "<p>Konto użytkownika zostało usunięte lub wyłączone!</p>";
+                        break;
+                    case 3:
+                        echo "<p>Błąd obsługi zapytania!</p>";
+                        break;
+                    case 4:
+                        echo "<p>Brak połączenia z bazą danych!</p>";
+                        break;
+                    case 5:
+                        echo "<p>Konto utworzono pomyślnie!</p>";
+                        break;
+                    case 6:
+                        echo "<p>Konto o podanym loginie już istnieje!</p>";
+                        break;
+                }
             }
-            
             ?>
     </div>
     </body>

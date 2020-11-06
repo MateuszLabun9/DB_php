@@ -22,7 +22,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                 <p class="test"> Tutaj znajduje się lista podań do decyzji:</p>
                 
                                 <br>
-                
+                <!-- WYWALIĆ TE INPUTY Z ODNOŚNIKÓW TO JEST USELESS!!!!!!! DO IT EXACTLY LIKE petent.php!!!!!!!! ECHO TEŻ USELESS -->
                 <?php echo '<a  href="wylogowywanie.php" style="text-decoration: none; "> <input  type="submit" style="width: 10%; position:absolute; left: 80%; top: 40%; font-size: 15px; padding: 1%;" value="Wyloguj"> </a>'
     ;?>
                   

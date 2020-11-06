@@ -6,7 +6,7 @@ require_once "uzytkownik.php";
 if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika'], $_POST['haslo']) && $_SESSION['typ_uzytkownika']!='petent'){
     session_unset();
     session_destroy();
-    header("Location: index.php");
+    header("Location: index.php?alert=1");
 }
 else{
     $nazwa_uzytkownika = $_SESSION['nazwa_uzytkownika'];
