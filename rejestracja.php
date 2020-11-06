@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <title>Rejestracja do systemu rewizji CV</title>
     <link rel="stylesheet" href="style/logowanie_style.css">
+</head>
+    
     <body>
         <h2>System rejestracji podań osób starających się o pracę</h2>
         <div id="container">

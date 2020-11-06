@@ -43,7 +43,8 @@ input[type=submit]:hover
 	background-color: #37b93d;
 }
 input[type=text],
-input[type=number]
+input[type=number],
+input[type=password]
 {
 	width: 300px;
 	background-color: #efefef;
@@ -133,4 +134,21 @@ label:hover{
 #file-chosen{
   margin-left: 0.3rem;
   font-family: sans-serif;
+}
+
+.przycisk{
+    text-decoration:none; 
+    width: 30%;
+	background-color: #36b03c;
+	font-size:20px;
+	color: white;
+	padding: 2%;
+	margin-top: 25;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none; 
+    display: block;
+    margin: 0 auto; 
 }

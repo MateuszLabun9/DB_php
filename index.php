@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Logowanie do systemu rewizji CV</title>
     <link rel="stylesheet" href="style/logowanie_style.css">
+</head>
     <body>
         <h2>System rejestracji podań osób starających się o pracę</h2>
         <div id="container">
@@ -24,6 +25,14 @@
              
         </form>
            <p><a href="rejestracja.php" >Nie masz jeszcze konta? Zarejestruj się!</a></p>
+            
+            <?php
+            
+            if(isset($_GET['alert'])){
+                if($_GET['alert']==1) echo "<p>Proszę poprawnie uzupełnić dane logowania!</p>";
+            }
+            
+            ?>
     </div>
     </body>
     </html>
