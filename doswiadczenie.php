@@ -17,9 +17,9 @@
             <br>
             <br>
             
-
+        
         </form>
-                    <a href=umiejetnosci.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>
+               <a href=umiejetnosci.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>    
         </div>
     </body>
 </html>

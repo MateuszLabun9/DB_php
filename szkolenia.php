@@ -13,9 +13,10 @@
             <input type="text" name="rok_rozp_s" placeholder=" Rok rozpoczęcia"><br>
             <br>
             
-            
+           
+        
         </form>
-                   <a href=index.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>
+                   <a href=wymagane_dokumenty.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a> 
         </div>
     </body>
 </html>

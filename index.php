@@ -21,9 +21,9 @@
             
             <!-- blok logowania -->
             <input type="submit" value="LOGIN"><br>
-            
+             
         </form>
-            <p><a href="rejestracja.php" >Nie masz jeszcze konta? Zarejestruj się!</a></p>
+           <p><a href="rejestracja.php" >Nie masz jeszcze konta? Zarejestruj się!</a></p>
     </div>
     </body>
     </html>

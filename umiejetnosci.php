@@ -14,8 +14,11 @@
             <br>
             <br>
         
-        </form>
-                    <a href=szkolenia.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>
+            
+            
+        
+         </form>
+                  <a href=szkolenia.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>  
         </div>
     </body>
 </html>
