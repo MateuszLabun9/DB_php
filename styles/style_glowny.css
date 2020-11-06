@@ -1,0 +1,106 @@
+
+#container
+{
+	background-color: white;
+	width: 80%;
+	padding: 5%;
+    margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	box-shadow: 3px 3px 10px 5px rgba(204,204,204,0.9);
+    font-family: "sans-serif", verdana;
+}
+/* button */
+input[type=submit]
+{
+	width: 30%;
+	background-color: #36b03c;
+	font-size:20px;
+	color: white;
+	padding: 2%;
+	margin-top: 25;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none; 
+    display: block;
+    margin: 0 auto; 
+}
+
+input[type=submit]:focus
+{
+	-webkit-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+	-moz-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+input[type=submit]:hover
+{
+	background-color: #37b93d;
+}
+input[type=text],
+input[type=number]
+{
+	width: 300px;
+	background-color: #efefef;
+	color: #666;
+	border: 2px solid #ddd;
+	border-radius: 5px;
+	font-size: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+	/*outline: none;*/
+	margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+input[type=text]:focus,
+input[type=number]:focus
+{
+	-webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	border: 2px solid #a5cda5;
+	background-color: #e9f3e9;
+	color: #428c42;
+}
+
+#test{
+    color: green;
+    text-decoration: none;
+    font-size: 24px;
+    padding-left: 2%;
+    font-family: "sans-serif", verdana;
+    text-align: center;
+}
+/* headery */
+h1{
+    color: black;
+    margin-top: 4%;
+    text-align: center;
+    font-family: "sans-serif", verdana;
+    font-size: 24px;
+}
+/*paragrafy*/
+p.test{
+   font-size: 16px;
+  text-align: center;
+}
+
+a{
+    text-align: center;
+}
+/* do kropek */
+div.parent {
+	text-align: center;
+	}
+ul{ 
+    display: inline-block; 
+	text-align: left; 
+}
+
+
