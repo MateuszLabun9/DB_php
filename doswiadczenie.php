@@ -19,13 +19,7 @@
             
         
         </form>
-         <center><a href="form_umiejetnosci.php" style="text-decoration: none;"><input  type="submit" value="DALEJ"></a></center>    
-       
-        
-        
-        <div class="tooltip">Pomoc
-             <span class="tooltiptext">Wpisz nazwy firm w których pracowałeś, uwzględnij stanowisko oraz rok rozpocząecia i zakończenia.</span>
-         </div>
-         </div>
+               <a href=umiejetnosci.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>    
+        </div>
     </body>
 </html>

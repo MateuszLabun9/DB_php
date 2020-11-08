@@ -24,8 +24,8 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                  <p class="test">W celu przeglądania informacji PHP:</p>
                 <a href=phpinfo.php style="text-decoration: none;"><input  type="submit" value="PHP Info"></a> 
                 <br>
-                <!-- WYWALIĆ TE INPUTY Z ODNOŚNIKÓW TO JEST USELESS!!!!!!! DO IT EXACTLY LIKE petent.php!!!!!!!! TEN ECHO TEŻ USELESS -->
-                <?php echo '<a  href="wylogowywanie.php" style="text-decoration: none; "> <input  type="submit" style="width: 10%; position:absolute; left: 80%; top: 63%; font-size: 15px; padding: 1%;" value="Wyloguj"> </a>'
+                <br>
+                <?php echo '<a  href="wylogowywanie.php" style="text-decoration: none; "> <input  type="submit" style="background-color: #FF4500;" value="Wyloguj"> </a>'
     ;?>
                   
             </div>

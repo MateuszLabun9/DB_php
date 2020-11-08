@@ -33,8 +33,9 @@ input[type=submit]
 	cursor: pointer;
 	letter-spacing: 2px;
 	outline: none; 
-    display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
+    
+
 }
 
 input[type=submit]:focus
@@ -92,14 +93,23 @@ h1{
     font-family: "sans-serif", verdana;
     font-size: 24px;
 }
+h2{
+    color: black;
+    margin-top: 4%;
+    text-align: center;
+    font-family: "sans-serif", verdana;
+    font-size: 18px;
+    
+}
 /*paragrafy*/
 p.test{
-   font-size: 16px;
+   font-size: 27px;
   text-align: center;
 }
 
 a{
     text-align: center;
+    color: red;
 }
 /* do kropek */
 div.parent {
@@ -108,6 +118,7 @@ div.parent {
 ul{ 
     display: inline-block; 
 	text-align: left; 
+    font-size: 25px;
 }
 
 
@@ -137,6 +148,9 @@ label:hover{
     background-color: #37b93d;
 }
 
+.alarm{
+  color: red;
+}
 #file-chosen{
   margin-left: 0.3rem;
   font-family: sans-serif;
@@ -161,14 +175,15 @@ label:hover{
 .tooltip {
   position: relative;
   display: inline-block;
-  left: 40%;
+  left: 30%;
   border-bottom: 1px dotted black;
+
   
 }
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 200px;
+  width: 600%;
   background-color: black;
   color: #fff;
   text-align: center;
@@ -182,4 +197,31 @@ label:hover{
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+#znacznik_select{
+    color: #757580;
+    background-color: #efefef;
+    width: 28.3%;
+    font-size:20px;
+    border-radius: 5px;
+    border-color: #dddddd;
+    border-width: 2px;
+    padding: 1%;
+    margin-bottom: 0.5%;
+}
+
+.wyloguj{
+    width: 30%;
+	background-color: #36b03c;
+	color: white;
+	padding: 2%;
+	margin-top: 25;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none; 
+    display: block;
+    margin: 0 auto; 
 }

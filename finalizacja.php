@@ -9,13 +9,18 @@
           <form action="finalizacja.php" method="post" enctype="multipart/form-data">
          
               
-            tutaj bedzie sciagane z bazy chyba idk lol
+               <h2>Wkrótce rekruter sprawdzi poprawność podania, a następnie przejdzie ono przez etap decyzyjny.</h2>
+               
+               <h2>Zaloguj się ponownie za jakiś czas i sprawdź        decyzję i jej uzasadnienie. </h2>
+               
+               <h2>Dziękujemy za złożenie podania.
+               </h2>
              
               
               
          </form>
                     <a href="podglad_decyzji.php" style="text-decoration: none;"><input  type="submit" value="DALEJ"></a> 
-         <!-- WYWALIĆ TE INPUTY Z ODNOŚNIKÓW TO JEST USELESS!!!!!!! DO IT EXACTLY LIKE petent.php!!!!!!!! -->
+         
         </div>
          
     </body>

@@ -30,23 +30,48 @@
             
             if(isset($_GET['alert'])){
                 switch($_GET['alert']){
+                    
                     case 1:
-                        echo "<p>Proszę poprawnie uzupełnić dane logowania!</p>";
+                        echo '<span style="color:#DC143C; font-family: sans-serif, verdana;font-size:16px;">
+                        
+                        Proszę poprawnie uzupełnić dane logowania!
+                        
+                        </span>';
                         break;
                     case 2:
-                        echo "<p>Konto użytkownika zostało usunięte lub wyłączone!</p>";
+                        echo '<span style="color:#DC143C; font-family: sans-serif, verdana;font-size:16px;">
+                        
+                        Konto użytkownika zostało usunięte lub wyłączone!
+                        
+                        </span>';
                         break;
                     case 3:
-                        echo "<p>Błąd obsługi zapytania!</p>";
+                        echo '<span style="color:#DC143C; font-family: sans-serif, verdana;font-size:16px;">
+                        
+                        Błąd obsługi zapytania!
+                        
+                        </span>';
                         break;
                     case 4:
-                        echo "<p>Brak połączenia z bazą danych!</p>";
+                        echo '<span style="color:#DC143C; font-family: sans-serif, verdana;font-size:16px;">
+                        
+                        Brak połączenia z bazą danych!
+                        
+                        </span>';
                         break;
                     case 5:
-                        echo "<p>Konto utworzono pomyślnie!</p>";
+                        echo '<span style="color:#DC143C; font-family: sans-serif, verdana;font-size:16px;">
+                        
+                        Konto utworzono pomyślnie!
+                        
+                        </span>';
                         break;
                     case 6:
-                        echo "<p>Konto o podanym loginie już istnieje!</p>";
+                        echo '<span style="color:#DC143C; font-family: sans-serif, verdana;font-size:16px;">
+                        
+                        Konto o podanym loginie już istnieje!
+                        
+                        </span>';
                         break;
                 }
             }

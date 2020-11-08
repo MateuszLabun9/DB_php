@@ -18,11 +18,7 @@
             
         
          </form>
-         <center><a href="form_szkolenia.php" style="text-decoration: none;"><input  type="submit" value="DALEJ"></a></center>  
-       
-                <div class="tooltip">Pomoc
-             <span class="tooltiptext">Wypisz wszystkie swoje umiejętności oraz ich poziom. Na przykład: język angielski, B2</span>
-         </div>
+                  <a href=szkolenia.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>  
         </div>
     </body>
 </html>

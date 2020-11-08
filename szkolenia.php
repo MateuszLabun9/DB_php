@@ -16,11 +16,7 @@
            
         
         </form>
-         <center><a href="form_wymagane_dokumenty.php" style="text-decoration: none;"><input  type="submit" value="DALEJ"></a></center> 
-      
-        <div class="tooltip">Pomoc
-             <span class="tooltiptext">Wypisz wszystkie szkolenia które odbyłeś, uwzględnij rok rozpoczęcia.</span>
-         </div>
+                   <a href=wymagane_dokumenty.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a> 
         </div>
     </body>
 </html>
