@@ -97,6 +97,7 @@ class Uzytkownik{
                     if($users>0){
                         $row = $result->fetch_assoc();
                         if($row['czy_usuniety']==0){
+                            $_SESSION['id_uzytkownika']=$row['id_uzytkownika'];
                             $_SESSION['nazwa_uzytkownika']=$row['nazwa_uzytkownika'];
                             $_SESSION['typ_uzytkownika']=$row['typ_uzytkownika'];
 

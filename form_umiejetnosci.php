@@ -18,7 +18,7 @@
             
         
          </form>
-                  <a href=szkolenia.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>  
+                  <a href="form_szkolenia.php" style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>  
          <!-- WYWALIĆ TE INPUTY Z ODNOŚNIKÓW TO JEST USELESS!!!!!!! DO IT EXACTLY LIKE petent.php!!!!!!!! -->
                 <div class="tooltip">Pomoc
              <span class="tooltiptext">Wypisz wszystkie swoje umiejętności oraz ich poziom. Na przykład: język angielski, B2</span>

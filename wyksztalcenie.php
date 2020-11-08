@@ -1,30 +1,33 @@
-<!doctype html>
-<html>
-    <head>
-        <link rel="stylesheet" href="style/style_glowny.css" type="text/css" />
-  
-    </head>
-    <body>
-      <h1>System rejestracji podań osób starających się o pracę</h1>
-     <div id="container">   
-         
-        <form action="wyksztalcenie.php" method="post">
-            <p class="test"> Etap 1: Wykształcenie<br></p>
-            <input type="text" name="wyksztalcenie" placeholder="Wykształcenie"><br>
-            <input type="text" name="nazwa_szkoly" placeholder="Nazwa Szkoły"><br>
-            <input type="number" name="rok_rozp_w" placeholder="Rok rozpoczęcia"><br>
-            <input type="number" name="rok_rozp_w" placeholder="Rok zakończenia"><br>
-            <br>
-       
-            
-        </form>
-          <a href=doswiadczenie.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>
-         <!-- WYWALIĆ TE INPUTY Z ODNOŚNIKÓW TO JEST USELESS!!!!!!! DO IT EXACTLY LIKE petent.php!!!!!!!! -->
-         
-         <div class="tooltip">Pomoc
-             <span class="tooltiptext">Wpisz poziom swojego wykształcenia, dokładną nazwę szkoły oraz lata w których się uczyłeś.</span>
-         </div>
-         
-        </div>
-    </body>
-</html>
+<?php
+class Wyksztalcenie{
+    public $poziom;
+    public $id_uzytkownika;
+    public $nazwa_szkoly;
+    public $rok_rozp;
+    public $rok_zak;
+    public function dodajWyksztalcenie($poziom, $id_uzytownika, $nazwa_szkoly, $rok_rozp, $rok_zak){
+        require_once "connect.php";
+        $this->poziom = $poziom;
+        $this->id_uzytkownika = $id_uzytkownika;
+        $this->nazwa_szkoly = $nazwa_szkoly;
+        $this->rok_rozp = $rok_rozp;
+        $this->rok_zak = $rok_zak;
+        
+        $conn = @new mysqli($host, $db_user, $db_password, $db_name);
+        
+        if($conn->connect_errno!=0){
+            header("Location: rejestracja.php?alert=4");//nie laczy z baza
+        }
+        else{
+            $sql = "INSERT INTO wyksztalcenie (klucz_wyksztalcenie, id_uzytkownika, poziom, nazwa_szkoly, rok_rozpoczecia, rok_zakonczenia) VALUES (NULL, '".$id_uzytownika."', '".$poziom."', '".$nazwa_szkoly."', '".$rok_rozp."', '".$rok_zak."');";
+            if($conn->query($sql) === TRUE){
+                header("Location: form_wyksztalcenie.php");//dodano wyksztalcenie
+            }
+            else{
+                header("Location: form_wyksztalcenie.php?alert=3");//blad obslugi zapytania
+            }
+        }
+        
+    }
+}
+?>
