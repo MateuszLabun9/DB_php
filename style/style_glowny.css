@@ -1,40 +1,61 @@
+body {
+  background-color: #f2f2f2;
+}
 
 #container
 {
 	background-color: white;
-	width: 80%;
-	padding: 5%;
-    margin-top: 5%;
+	width: 300px;
+	padding: 50px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
+	margin-top: 5%;
 	-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 	-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
-	box-shadow: 3px 3px 10px 5px rgba(204,204,204,0.9);
-    font-family: "sans-serif", verdana;
+	box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 }
-#separator{
-   
-    margin-left:auto;
-    margin-right:auto;
-    padding-bottom: 8%;
+
+input[type=text],
+input[type=password],
+input[type=date]
+{
+	width: 300px;
+	background-color: #efefef;
+	color: #666;
+	border: 2px solid #ddd;
+	border-radius: 5px;
+	font-size: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+	/*outline: none;*/
+	margin-top: 10px;
 }
-/* button */
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=date]:focus
+{
+	-webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	border: 2px solid #a5cda5;
+	background-color: #e9f3e9;
+	color: #428c42;
+}
+
 input[type=submit]
 {
-	width: 30%;
+	width: 300px;
 	background-color: #36b03c;
 	font-size:20px;
 	color: white;
-	padding: 2%;
-	margin-top: 25;
+	padding: 15px 10px;
+	margin-top: 20px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 	letter-spacing: 2px;
-	outline: none; 
-    display: block;
-    margin: 0 auto; 
+	outline: none;
 }
 
 input[type=submit]:focus
@@ -48,113 +69,63 @@ input[type=submit]:hover
 {
 	background-color: #37b93d;
 }
-input[type=text],
-input[type=number],
-input[type=password]
-{
-	width: 300px;
-	background-color: #efefef;
-	color: #666;
-	border: 2px solid #ddd;
-	border-radius: 5px;
-	font-size: 20px;
-	padding: 10px;
-	box-sizing: border-box;
-	/*outline: none;*/
-	margin-top: 5px;
-    margin-bottom: 5px;
-}
 
-input[type=text]:focus,
-input[type=number]:focus
+input::-webkit-input-placeholder
 {
-	-webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
-	-moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
-	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
-	border: 2px solid #a5cda5;
-	background-color: #e9f3e9;
-	color: #428c42;
+    color: #999;
 }
-
-#test{
-    color: green;
-    text-decoration: none;
-    font-size: 24px;
-    padding-left: 2%;
-    font-family: "sans-serif", verdana;
-    text-align: center;
+input:focus::-webkit-input-placeholder
+{
+    color: #428C42;
 }
-/* headery */
-h1{
-    color: black;
-    margin-top: 4%;
-    text-align: center;
-    font-family: "sans-serif", verdana;
-    font-size: 24px;
+/* Firefox < 19 */
+input:-moz-placeholder
+{
+    color: #999;
 }
-/*paragrafy*/
-p.test{
-   font-size: 16px;
-  text-align: center;
+input:focus:-moz-placeholder
+{
+    color: #428C42;
+}
+/* Firefox > 19 */
+input::-moz-placeholder
+{
+    color: #999;
+}
+input:focus::-moz-placeholder
+{
+    color: #428C42;
+}
+/* Internet Explorer 10 */
+input:-ms-input-placeholder
+{
+    color: #999;
+}
+input:focus:-ms-input-placeholder
+{
+    color: #428C42;
 }
 
 a{
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    padding-left: 2%;
+    font-family: "sans-serif", verdana;
+    
+}
+
+h1{
+    
+    text-shadow: 1px 1px grey;
     text-align: center;
-}
-/* do kropek */
-div.parent {
-	text-align: center;
-	}
-ul{ 
-    display: inline-block; 
-	text-align: left; 
+    margin-top: -2%;
+    font-family: "sans-serif", verdana;
 }
 
-
-label {
-    width: 26%;
-	background-color: #36b03c;
-	font-size:20px;
-	color: white;
-	padding: 2%;
-	margin-top: 25;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	letter-spacing: 2px;
-	outline: none; 
-    display: block;
-    margin: 0 auto; 
-}
-
-label:focus {
-    -webkit-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
-	-moz-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
-	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
-}
-
-label:hover{
-    background-color: #37b93d;
-}
-
-#file-chosen{
-  margin-left: 0.3rem;
-  font-family: sans-serif;
-}
-
-.przycisk{
-    text-decoration:none; 
-    width: 30%;
-	background-color: #36b03c;
-	font-size:20px;
-	color: white;
-	padding: 2%;
-	margin-top: 25;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	letter-spacing: 2px;
-	outline: none; 
-    display: block;
-    margin: 0 auto; 
+h2{
+     margin-top: 4%;
+    text-align: center;
+    font-family: "sans-serif", verdana;
+    font-size: 24px;
 }
