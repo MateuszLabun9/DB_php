@@ -21,6 +21,11 @@
         </form>
                <a href=umiejetnosci.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>    
          <!-- WYWALIĆ TE INPUTY Z ODNOŚNIKÓW TO JEST USELESS!!!!!!! DO IT EXACTLY LIKE petent.php!!!!!!!! -->
-        </div>
+        
+        
+        <div class="tooltip">Pomoc
+             <span class="tooltiptext">Wpisz nazwy firm w których pracowałeś, uwzględnij stanowisko oraz rok rozpocząecia i zakończenia.</span>
+         </div>
+         </div>
     </body>
 </html>
