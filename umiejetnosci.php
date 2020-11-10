@@ -1,24 +1,29 @@
-<!doctype html>
-<html>
-    <head>
-        <link rel="stylesheet" href="style/style_glowny.css" type="text/css" />
-    </head>
-    <body>
-      <h1>System rejestracji podań osób starających się o pracę</h1>
-     <div id="container">  
-        <form action="umiejetnosci.php" method="post">
-            
-            <p class="test">  Etap 3: Umiejętności<br> </p>
-            <input type="text" name="nazwa_umiejetnosci" placeholder=" Nazwa umiejętności"><br>
-            <input type="text" name="poziom_umiejetnosci" placeholder="Poziom umiejętności"><br>
-            <br>
-            <br>
+<?php
+class Umiejetnosci{
+    public $nazwa_umiejetnosci;
+    public $id_uzytkownika;
+    public $poziom_umiejetnosci;
+    public function dodajWyksztalcenie($nazwa_umiejetnosci, $id_uzytownika, $poziom_umiejetnosci){
+        require_once "connect.php";
+        $this->nazwa_umiejetnosci = $nazwa_umiejetnosci;
+        $this->id_uzytkownika = $id_uzytkownika;
+        $this->poziom_umiejetnosci = $poziom_umiejetnosci;
         
-            
-            
+        $conn = @new mysqli($host, $db_user, $db_password, $db_name);
         
-         </form>
-                  <a href=szkolenia.php style="text-decoration: none;"><input  type="submit" value="DALEJ"></a>  
-        </div>
-    </body>
-</html>
+        if($conn->connect_errno!=0){
+            header("Location: rejestracja.php?alert=4");//nie laczy z baza
+        }
+        else{
+            $sql = "INSERT INTO umiejetnosci (klucz_umiejetnosci, id_uzytkownika, nazwa_umiejetnosci, poziom_umiejetnosci) VALUES (NULL, '".$id_uzytownika."', '".$nazwa_umiejetnosci."', '".$poziom_umiejetnosci."');";
+            if($conn->query($sql) === TRUE){
+                header("Location: form_umiejetnosci.php");//dodano wyksztalcenie
+            }
+            else{
+                header("Location: form_umiejetnosci.php?alert=3");//blad obslugi zapytania
+            }
+        }
+        
+    }
+}
+?>
