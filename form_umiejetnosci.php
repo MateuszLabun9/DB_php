@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html>
     <head>
@@ -6,12 +9,12 @@
     <body>
       <h1>System rejestracji podań osób starających się o pracę</h1>
      <div id="container">  
-        <form action="umiejetnosci.php" method="post">
+        <form action="dodaj_umiejetnosci.php" method="post">
             
             <p class="test">  Etap 3: Umiejętności<br> </p>
             <input type="text" name="nazwa_umiejetnosci" placeholder=" Nazwa umiejętności"><br>
-            <input type="text" name="poziom_umiejetnosci" placeholder="Poziom umiejętności"><br>
-            <br>
+            <input type="text" name="poziom_umiejetnosci" placeholder="Poziom umiejętności"><br><br>
+            <input class="przycisk" type="submit" value="DODAJ">
             <br>
         
             
