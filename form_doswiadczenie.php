@@ -16,7 +16,7 @@ session_start();
             <input type="text" name="nazwa_firmy" placeholder="Nazwa Firmy"><br>
             <input type="text" name="stanowisko" placeholder="Stanowisko"><br>
             <input type="number" name="rok_rozp_d" placeholder=" Rok rozpoczęcia"><br>
-            <input type="number" name="rok_rozp_d" placeholder="Rok zakończenia"><br><br>
+            <input type="number" name="rok_zak_d" placeholder="Rok zakończenia"><br><br>
             <input class="przycisk" type="submit" value="DODAJ">
             <br>
             
