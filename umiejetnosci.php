@@ -3,7 +3,7 @@ class Umiejetnosci{
     public $nazwa_umiejetnosci;
     public $id_uzytkownika;
     public $poziom_umiejetnosci;
-    public function dodajWyksztalcenie($nazwa_umiejetnosci, $id_uzytownika, $poziom_umiejetnosci){
+    public function dodajUmiejetnosci($nazwa_umiejetnosci, $id_uzytownika, $poziom_umiejetnosci){
         require_once "connect.php";
         $this->nazwa_umiejetnosci = $nazwa_umiejetnosci;
         $this->id_uzytkownika = $id_uzytkownika;
