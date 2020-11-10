@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html>
     <head>
@@ -6,11 +9,12 @@
     <body>
       <h1>System rejestracji podań osób starających się o pracę</h1>
      <div id="container">  
-        <form action="szkolenia.php" method="post">
+        <form action="dodaj_szkolenia.php" method="post">
             
             <p class="test">Etap 4: Przebyte szkolenia<br></p>
             <input type="text" name="nazwa_szkolenia" placeholder="Nazwa szkolenia"><br>
-            <input type="text" name="rok_rozp_s" placeholder=" Rok rozpoczęcia"><br>
+            <input type="text" name="rok_rozp_s" placeholder=" Rok rozpoczęcia"><br><br>
+            <input class="przycisk" type="submit" value="DODAJ">
             <br>
             
            
