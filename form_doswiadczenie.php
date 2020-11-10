@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html>
     <head>
@@ -7,14 +10,14 @@
       <h1>System rejestracji podań osób starających się o pracę</h1>
      <div id="container">  
          
-        <form action="doswiadczenie.php" method="post">
+        <form action="dodaj_doswiadczenie.php" method="post">
             
             <p class="test">    Etap 2: Doświadczenie zawodowe<br></p>
             <input type="text" name="nazwa_firmy" placeholder="Nazwa Firmy"><br>
             <input type="text" name="stanowisko" placeholder="Stanowisko"><br>
             <input type="number" name="rok_rozp_d" placeholder=" Rok rozpoczęcia"><br>
-            <input type="number" name="rok_rozp_d" placeholder="Rok zakończenia"><br>
-            <br>
+            <input type="number" name="rok_rozp_d" placeholder="Rok zakończenia"><br><br>
+            <input class="przycisk" type="submit" value="DODAJ">
             <br>
             
         
