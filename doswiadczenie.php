@@ -19,7 +19,7 @@ class Doswiadczenie{
             header("Location: rejestracja.php?alert=4");//nie laczy z baza
         }
         else{
-            $sql = "INSERT INTO doswiadczenie (klucz_doswiadczenie, id_uzytkownika, nazwa_firmy, stanowisko, rok_rozpoczecia, rok_zakonczenia) VALUES (NULL, '".$id_uzytownika."', '".$nazwa_firmy."', '".$stanowisko."', '".$rok_rozp_d."', '".$rok_zak_d."');";
+            $sql = "INSERT INTO doswiadczenie (klucz_doswiadczenie, id_uzytkownika, nazwa_firmy, stanowisko, rok_rozp_d, rok_zak_d) VALUES (NULL, '".$id_uzytownika."', '".$nazwa_firmy."', '".$stanowisko."', '".$rok_rozp_d."', '".$rok_zak_d."');";
             if($conn->query($sql) === TRUE){
                 header("Location: form_doswiadczenie.php");//dodano wyksztalcenie
             }
