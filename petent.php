@@ -33,7 +33,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                         </ul>
                 </div>
                 <br>
-                <a class="przycisk" href="form_wyksztalcenie.php">Nowy formularz</a> 
+                <a class="przycisk" href="form_podstawowe_informacje.php">Nowy formularz</a> 
                 <br>
                 <a class="przycisk"  href="wylogowywanie.php" >Wyloguj</a>
                 <br>

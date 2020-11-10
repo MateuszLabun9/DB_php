@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 10 Lis 2020, 19:19
+-- Czas generowania: 10 Lis 2020, 21:46
 -- Wersja serwera: 10.4.14-MariaDB
 -- Wersja PHP: 7.4.11
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `bdbmm1`
+-- Baza danych: `bdbmm`
 --
 
 -- --------------------------------------------------------
@@ -72,6 +72,21 @@ CREATE TABLE `podanie` (
 
 INSERT INTO `podanie` (`id_podania`, `id_uzytkownika`, `imie`, `nazwisko`, `data_urodzenia`, `plec`, `ocena_rekruta`, `decyzja`, `uzasadnienie_decyzji`, `zatrudniono`, `etap_rekrutacji`) VALUES
 (2, 2, 'Jakub', 'Wołodyjowski', '1998-11-09', 'M', NULL, NULL, '', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `podstawowe_informacje`
+--
+
+CREATE TABLE `podstawowe_informacje` (
+  `klucz_podstawowe_informacje` int(11) NOT NULL,
+  `id_uzytkownika` int(11) NOT NULL,
+  `plec` enum('Mężczyzna','Kobieta','Inne') COLLATE utf8_bin NOT NULL,
+  `imie` text COLLATE utf8_bin NOT NULL,
+  `nazwisko` text COLLATE utf8_bin NOT NULL,
+  `data_urodzenia` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -187,6 +202,13 @@ ALTER TABLE `podanie`
   ADD KEY `id_uzytkownika` (`id_uzytkownika`);
 
 --
+-- Indeksy dla tabeli `podstawowe_informacje`
+--
+ALTER TABLE `podstawowe_informacje`
+  ADD PRIMARY KEY (`klucz_podstawowe_informacje`),
+  ADD KEY `id_uzytkownika` (`id_uzytkownika`) USING BTREE;
+
+--
 -- Indeksy dla tabeli `szkolenia`
 --
 ALTER TABLE `szkolenia`
@@ -221,7 +243,7 @@ ALTER TABLE `wyksztalcenie`
 -- AUTO_INCREMENT dla tabeli `doswiadczenie`
 --
 ALTER TABLE `doswiadczenie`
-  MODIFY `klucz_doswiadczenie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `klucz_doswiadczenie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT dla tabeli `podanie`
@@ -230,16 +252,22 @@ ALTER TABLE `podanie`
   MODIFY `id_podania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT dla tabeli `podstawowe_informacje`
+--
+ALTER TABLE `podstawowe_informacje`
+  MODIFY `klucz_podstawowe_informacje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT dla tabeli `szkolenia`
 --
 ALTER TABLE `szkolenia`
-  MODIFY `klucz_szkolenia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `klucz_szkolenia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT dla tabeli `umiejetnosci`
 --
 ALTER TABLE `umiejetnosci`
-  MODIFY `klucz_umiejetnosci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `klucz_umiejetnosci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT dla tabeli `uzytkownik`
@@ -251,7 +279,7 @@ ALTER TABLE `uzytkownik`
 -- AUTO_INCREMENT dla tabeli `wyksztalcenie`
 --
 ALTER TABLE `wyksztalcenie`
-  MODIFY `klucz_wyksztalcenie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `klucz_wyksztalcenie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Ograniczenia dla zrzutów tabel
@@ -268,6 +296,12 @@ ALTER TABLE `doswiadczenie`
 --
 ALTER TABLE `podanie`
   ADD CONSTRAINT `podanie_ibfk_1` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownik` (`id_uzytkownika`);
+
+--
+-- Ograniczenia dla tabeli `podstawowe_informacje`
+--
+ALTER TABLE `podstawowe_informacje`
+  ADD CONSTRAINT `podstawowe_informacje_ibfk_1` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownik` (`id_uzytkownika`);
 
 --
 -- Ograniczenia dla tabeli `szkolenia`

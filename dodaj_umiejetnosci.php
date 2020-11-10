@@ -7,7 +7,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['id_uzytkownika'])){
     session_destroy();
     header("Location: index.php?alert=1");//uzytkownik nie jest zalogowany
 }
-else if(!isset($_POST['nazwa_umiejetnosci'], $_POST['poziom_umiejetnosci'] || $_POST['nazwa_umiejetnosci']=="" || $_POST['poziom_umiejetnosci']==""){
+else if(!isset($_POST['nazwa_umiejetnosci'], $_POST['poziom_umiejetnosci']) || $_POST['nazwa_umiejetnosci']=="" || $_POST['poziom_umiejetnosci']==""){
     header("Location: form_umiejetnosci.php?alert=1");//uzytkownik nie uzupelnil formularza
 }
 else{

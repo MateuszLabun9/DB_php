@@ -128,3 +128,15 @@ h2{
     font-family: "sans-serif", verdana;
     font-size: 24px;
 }
+
+#znacznik_select{
+    color: #757580;
+    background-color: #efefef;
+    width: 28.3%;
+    font-size:20px;
+    border-radius: 5px;
+    border-color: #dddddd;
+    border-width: 2px;
+    padding: 1%;
+    margin-bottom: 0.5%;
+}

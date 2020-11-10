@@ -19,21 +19,7 @@
             <input type="password" name="haslo" placeholder="Hasło">
             <br>
             
-            <input type="text" name="imie" placeholder="Imię">
-            <br>
-            
-            <input type="text" name="nazwisko" placeholder="Nazwisko">
-            <br>
-            
-            <input type="date" name="data_urodzenia" placeholder="Data urodzenia"
-            onfocus="this.placeholder=''" onblur="this.placeholder='Data urodzenia'">
-            <br>
-            <br>
-            
-            <a>Płeć</a><input type="radio" name="gender" value="male">
-            <label for="male"><a>Mężczyzna</a></label>
-                 <input type="radio" name="gender" value="female">
-            <label for="female"><a>Kobieta</a></label><br>
+           
             
             <input type="submit" value="Zarejestruj się!"><br>
         </form>
