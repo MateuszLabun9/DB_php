@@ -19,7 +19,7 @@ class PodstawoweInformacje{
             header("Location: rejestracja.php?alert=4");//nie laczy z baza
         }
         else{
-            $sql = "INSERT INTO podstawowe_informacje (klucz_podstawowe_informacje, id_uzytkownika, plec, imie, nazwisko, data_urodzenia) VALUES (NULL, '".$id_uzytownika."', '".$plec."', '".$imie."', '".$nazwisko."', '".$data_urodzenia."');";
+            $sql = "INSERT INTO podanie (id_podania, id_uzytkownika, plec, imie, nazwisko, data_urodzenia) VALUES (NULL, '".$id_uzytownika."', '".$plec."', '".$imie."', '".$nazwisko."', '".$data_urodzenia."');";
             if($conn->query($sql) === TRUE){
                 header("Location: form_podstawowe_informacje.php");//dodano wyksztalcenie
             }

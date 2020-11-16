@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 10 Lis 2020, 21:46
--- Wersja serwera: 10.4.14-MariaDB
--- Wersja PHP: 7.4.11
+-- Czas generowania: 16 Lis 2020, 21:00
+-- Wersja serwera: 10.4.8-MariaDB
+-- Wersja PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `bdbmm`
+-- Baza danych: `bdbmm1`
 --
 
 -- --------------------------------------------------------
@@ -71,22 +72,8 @@ CREATE TABLE `podanie` (
 --
 
 INSERT INTO `podanie` (`id_podania`, `id_uzytkownika`, `imie`, `nazwisko`, `data_urodzenia`, `plec`, `ocena_rekruta`, `decyzja`, `uzasadnienie_decyzji`, `zatrudniono`, `etap_rekrutacji`) VALUES
-(2, 2, 'Jakub', 'Wołodyjowski', '1998-11-09', 'M', NULL, NULL, '', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `podstawowe_informacje`
---
-
-CREATE TABLE `podstawowe_informacje` (
-  `klucz_podstawowe_informacje` int(11) NOT NULL,
-  `id_uzytkownika` int(11) NOT NULL,
-  `plec` enum('Mężczyzna','Kobieta','Inne') COLLATE utf8_bin NOT NULL,
-  `imie` text COLLATE utf8_bin NOT NULL,
-  `nazwisko` text COLLATE utf8_bin NOT NULL,
-  `data_urodzenia` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+(2, 2, 'Jakub', 'Wołodyjowski', '1998-11-09', 'M', NULL, NULL, '', NULL, NULL),
+(3, 2, 'dasdfasfsda', 'dfgsfsdafads', '2020-11-22', 'K', NULL, NULL, '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -106,9 +93,7 @@ CREATE TABLE `szkolenia` (
 --
 
 INSERT INTO `szkolenia` (`klucz_szkolenia`, `id_uzytkownika`, `nazwa_szkolenia`, `rok_rozp_s`) VALUES
-(3, 2, 'szkolenie2', 2018),
-(5, 2, 'szkolenie1', 2011),
-(6, 2, 'dasdsa', 3123);
+(1, 2, 'Przysposobienie obronne', 2016);
 
 -- --------------------------------------------------------
 
@@ -120,7 +105,7 @@ CREATE TABLE `umiejetnosci` (
   `klucz_umiejetnosci` int(11) NOT NULL,
   `id_uzytkownika` int(11) NOT NULL,
   `nazwa_umiejetnosci` text COLLATE utf8_bin NOT NULL,
-  `poziom_umiejetnosci` text COLLATE utf8_bin NOT NULL
+  `poziom_umiejetnosci` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -128,9 +113,7 @@ CREATE TABLE `umiejetnosci` (
 --
 
 INSERT INTO `umiejetnosci` (`klucz_umiejetnosci`, `id_uzytkownika`, `nazwa_umiejetnosci`, `poziom_umiejetnosci`) VALUES
-(3, 2, 'sprzatanie', 'do blysku'),
-(5, 2, 'gotowanie', 'masterszef'),
-(6, 2, 'mycie szyb', 'bez smug');
+(1, 2, 'Bieganie', 5);
 
 -- --------------------------------------------------------
 
@@ -154,10 +137,8 @@ INSERT INTO `uzytkownik` (`typ_uzytkownika`, `id_uzytkownika`, `nazwa_uzytkownik
 ('petent', 2, 'petent1', 'petent', 0),
 ('petent', 3, 'petent2', 'petent', 1),
 ('administrator', 4, 'administrator', 'admin', 0),
-('petent', 10, 'zdzisiuwiertara', 'asdf', 1),
-('petent', 11, 'panpawel', 'hselko', 1),
-('kierownik', 16, 'kierownik', 'kier', 0),
-('asystent', 17, 'rekruter', 'rekrut', 0);
+('petent', 10, 'zdzisiuwiertara', 'asdf', 0),
+('petent', 11, 'panpawel', 'hselko', 0);
 
 -- --------------------------------------------------------
 
@@ -179,9 +160,10 @@ CREATE TABLE `wyksztalcenie` (
 --
 
 INSERT INTO `wyksztalcenie` (`klucz_wyksztalcenie`, `id_uzytkownika`, `poziom`, `nazwa_szkoly`, `rok_rozpoczecia`, `rok_zakonczenia`) VALUES
-(3, 2, 'Podstawowe', 'Zespół Szkół Łączności', 2014, 2018),
-(5, 2, 'Średnie', 'Szkoła Podstawowa nr 5 im. Józefa Piłsudskiego w Krapkowicach', 2005, 2011),
-(9, 2, 'Średnie', 'Liceum nr 3 w Zabrzu', 2012, 2018);
+(3, 2, 'Średnie', 'Zespół Szkół Łączności', 2014, 2018),
+(5, 2, 'Podstawowe', 'Szkoła Podstawowa nr 5 im. Józefa Piłsudskiego w Krapkowicach', 2005, 2011),
+(9, 11, 'Techniczne', 'Zespół Szkół Technicznych w Zbąszynku im Bolesława Bieruta', 1966, 1971),
+(10, 10, 'Zawodowe', 'Zasadnicza Szkoła Zawodowa nr 13 w Wadowicach', 1991, 1995);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -192,7 +174,7 @@ INSERT INTO `wyksztalcenie` (`klucz_wyksztalcenie`, `id_uzytkownika`, `poziom`, 
 --
 ALTER TABLE `doswiadczenie`
   ADD PRIMARY KEY (`klucz_doswiadczenie`),
-  ADD KEY `id_uzytkownika` (`id_uzytkownika`) USING BTREE;
+  ADD KEY `id_uzytkownika` (`id_uzytkownika`);
 
 --
 -- Indeksy dla tabeli `podanie`
@@ -202,18 +184,11 @@ ALTER TABLE `podanie`
   ADD KEY `id_uzytkownika` (`id_uzytkownika`);
 
 --
--- Indeksy dla tabeli `podstawowe_informacje`
---
-ALTER TABLE `podstawowe_informacje`
-  ADD PRIMARY KEY (`klucz_podstawowe_informacje`),
-  ADD KEY `id_uzytkownika` (`id_uzytkownika`) USING BTREE;
-
---
 -- Indeksy dla tabeli `szkolenia`
 --
 ALTER TABLE `szkolenia`
   ADD PRIMARY KEY (`klucz_szkolenia`),
-  ADD KEY `id_uzytkownika` (`id_uzytkownika`) USING BTREE;
+  ADD KEY `id_uzytkownika` (`id_uzytkownika`);
 
 --
 -- Indeksy dla tabeli `umiejetnosci`
@@ -236,50 +211,44 @@ ALTER TABLE `wyksztalcenie`
   ADD KEY `id_uzytkownika` (`id_uzytkownika`);
 
 --
--- AUTO_INCREMENT dla zrzuconych tabel
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
 -- AUTO_INCREMENT dla tabeli `doswiadczenie`
 --
 ALTER TABLE `doswiadczenie`
-  MODIFY `klucz_doswiadczenie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `klucz_doswiadczenie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT dla tabeli `podanie`
 --
 ALTER TABLE `podanie`
-  MODIFY `id_podania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT dla tabeli `podstawowe_informacje`
---
-ALTER TABLE `podstawowe_informacje`
-  MODIFY `klucz_podstawowe_informacje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_podania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `szkolenia`
 --
 ALTER TABLE `szkolenia`
-  MODIFY `klucz_szkolenia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `klucz_szkolenia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `umiejetnosci`
 --
 ALTER TABLE `umiejetnosci`
-  MODIFY `klucz_umiejetnosci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `klucz_umiejetnosci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `uzytkownik`
 --
 ALTER TABLE `uzytkownik`
-  MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT dla tabeli `wyksztalcenie`
 --
 ALTER TABLE `wyksztalcenie`
-  MODIFY `klucz_wyksztalcenie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `klucz_wyksztalcenie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Ograniczenia dla zrzutów tabel
@@ -296,12 +265,6 @@ ALTER TABLE `doswiadczenie`
 --
 ALTER TABLE `podanie`
   ADD CONSTRAINT `podanie_ibfk_1` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownik` (`id_uzytkownika`);
-
---
--- Ograniczenia dla tabeli `podstawowe_informacje`
---
-ALTER TABLE `podstawowe_informacje`
-  ADD CONSTRAINT `podstawowe_informacje_ibfk_1` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownik` (`id_uzytkownika`);
 
 --
 -- Ograniczenia dla tabeli `szkolenia`
