@@ -13,7 +13,13 @@ session_start();
             
             <p class="test">  Etap 3: Umiejętności<br> </p>
             <input type="text" name="nazwa_umiejetnosci" placeholder=" Nazwa umiejętności"><br>
-            <input type="text" name="poziom_umiejetnosci" placeholder="Poziom umiejętności"><br><br>
+            <select name="poziom_umiejetnosci" id="znacznik_select">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select><br><br>
             <input class="przycisk" type="submit" value="DODAJ">
             <br>
         
