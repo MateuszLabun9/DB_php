@@ -37,7 +37,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                     
                     
                     
-                    
+                    //ebe
                     
                     
                     
