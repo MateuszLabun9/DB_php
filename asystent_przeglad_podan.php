@@ -15,16 +15,9 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
          <h1>System rejestracji podań osób starających się o pracę</h1>
             <div id="container">
              
-              
-   
-                <!--to ciągnie z bazy -->
-                <div id="test">
-                    <?php echo "<a> Witaj ".$_SESSION['nazwa_uzytkownika']."!  Pomyślnie zalogowałeś się na swoje konto. </a>"; ?>
-                    
-                </div>
-            <!-- zawartość strony sam tekst --> 
-                <p class="test"> Tutaj znajduje się lista podań do zweryfikowania:</p>
-                                <br>
+        
+     
+                          
 <!-- test pobierania z bazy -->
        <?php
             require_once "connect.php";
@@ -38,7 +31,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                   if ($result = mysqli_query($conn, $sql)) {
                     while ($obj = mysqli_fetch_object($result)) {
                         
-                  echo '<a href="asystent_przeglad_podan.php">
+                  echo '<a href="asystent_przeglad_podan">
                   '.$obj->nazwa_uzytkownika.' <br><br> </a>';
                    
                     
@@ -50,12 +43,12 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                     
                     
                     
-    
+                    
                     }
                   }
                  }
 
-                echo '<a  href="wylogowywanie.php" style="text-decoration: none; "> <input  type="submit"  value="Wyloguj"> </a>';
+                echo '<a  href="asystent.php" style="text-decoration: none; "> <input  type="submit"  value="Powrót"> </a>';
             ?>
                   
             </div>
