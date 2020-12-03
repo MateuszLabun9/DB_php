@@ -33,7 +33,27 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                         </ul>
                 </div>
                 <br>
-                <a class="przycisk" href="form_podstawowe_informacje.php">Nowy formularz</a> 
+                <?php
+                require_once "connect.php";
+
+                $conn = @new mysqli($host, $db_user, $db_password, $db_name);
+
+                if($conn->connect_errno!=0){
+                    header("Location: petent.php?alert=4");//nie laczy z baza
+                }
+                else{
+                    $sql = "SELECT p.etap_rekrutacji FROM podanie p, uzytkownik u WHERE u.id_uzytkownika=p.id_uzytkownika AND u.nazwa_uzytkownika='".$_SESSION['nazwa_uzytkownika']."';";
+                    if($result = $conn->query($sql)){
+                        $podania = $result->num_rows;
+                        if($podania>0) echo '<a class="przycisk" href="podglad_decyzji.php">Przejdź do istniejacego formularza</a>';
+                        else echo '<a class="przycisk" href="form_podstawowe_informacje.php">Nowy formularz</a>';
+                    }
+                    else{
+                        header("Location: petent.php?alert=3");//blad obslugi zapytania
+                    }
+                }
+                ?>
+                 
                 <br>
                 <a class="przycisk"  href="wylogowywanie.php" >Wyloguj</a>
                 <br>

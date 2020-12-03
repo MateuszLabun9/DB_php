@@ -21,7 +21,7 @@ class PodstawoweInformacje{
         else{
             $sql = "INSERT INTO podanie (id_podania, id_uzytkownika, plec, imie, nazwisko, data_urodzenia) VALUES (NULL, '".$id_uzytownika."', '".$plec."', '".$imie."', '".$nazwisko."', '".$data_urodzenia."');";
             if($conn->query($sql) === TRUE){
-                header("Location: form_podstawowe_informacje.php");//dodano wyksztalcenie
+                header("Location: form_wyksztalcenie.php");//dodano Podstawowe informacje
             }
             else{
                 header("Location: form_podstawowe_informacje.php?alert=3");//blad obslugi zapytania

@@ -7,14 +7,14 @@
     <body>
       <h1>System rejestracji podań osób starających się o pracę</h1>
      <div id="container">  
-          <form action="wymagane_dokumenty.php" method="post" enctype="multipart/form-data">
+          <form action="plik.php" method="post" enctype="multipart/form-data">
          
             <div id="separator">  
-              <input type="file" id="label" style="visibility: hidden;">
+              <input type="file" name="plik" id="label" style="visibility: hidden;">
               <label onclick="tekst()" for="label"> DODAJ PLIK</label>  
               <span  id="file-chosen"></span>
               <br>
-              <!-- tutaj trzeba dodać php by przesłać plik do sql -->
+              <!-- dodac do htdocs katalog wyslane dokumenty -->
               <input type="submit" name="submit" value="PRZEŚLIJ" >
              
             </div>  

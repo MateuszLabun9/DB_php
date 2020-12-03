@@ -33,11 +33,10 @@ session_start();
             onfocus="this.placeholder=''" onblur="this.placeholder='Data urodzenia'">
             <br>
             <br>
-             <input class="przycisk" type="submit" value="DODAJ">
+             <input class="przycisk" type="submit" value="DALEJ">
              <br>
             
         </form>
-           <center> <a href="form_wyksztalcenie.php" style="text-decoration: none;"><input  type="submit" value="DALEJ"></a> </center>
              
             <div class="tooltip">Pomoc
                 <span class="tooltiptext">Pamiętaj o poprawnym uzupełnieniu wszystkich rubryk dotyczących twoich danych osobistych.</span>
