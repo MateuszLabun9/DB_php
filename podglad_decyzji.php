@@ -32,14 +32,24 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                         $podania = $result->num_rows;
                         if($podania>0){
                             $row = $result->fetch_assoc();
-                            if($row['etap_rekrutacji'] == NULL) echo '<h1>Twoje podanie zostało wysłane.</h1>
-              <p>Wkrótce rekruter sprawdzi poprawność podania, a następnie przejdzie ono przez etap decyzyjny.</p>
-              <br>
-              <p>Zaloguj się ponownie za jakiś czas i sprwadź decyzję i jej uzasadnienie</p>
-              <br>
-              <p>Dziękujemy za złożenie podania.</p>';
-                            else if ($row['etap_rekrutacji'] == 1) echo 'dostano się do etapu 1';
+                           
+                           if ($row['etap_rekrutacji'] == 1) echo '<a>Twój formularz oczekuje na rozpatrzenie.</a><br><br>';
+                            
+                            else if ($row['etap_rekrutacji'] == 2) {
+                                
+                                echo '<a>Gratulacje! zostałeś zaproszony na rozmowę kwalifikacyjną </a><br><br>';
+                            
+                                echo '<a href="akceptacja_rozmowy_przez_petenta.php"     class="przycisk" style="background-color=#ff7f00; ">akceptuj</a>';
+                            }
+                             else if ($row['etap_rekrutacji'] == 3) {
+                                
+                                echo '<a>Rekruter wkrótce się z tobą skontaktuje. Prosimy o cierpliwość.</a><br><br>';
+                            
+                             }
+                                
+                            
                         }
+                        
                         else header("Location: petent.php?alert=9");//nie wyslano podania
                     }
                     else{
@@ -49,6 +59,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
               
               ?>
          </form>
+         <br>
                 <a href="finalizacja.php" class="przycisk" style="text-decoration: none;">Podgląd podania</a><br>
                 <a href="petent.php" class="przycisk" style="text-decoration: none;">Powrót do strony głównej</a>
         </div>

@@ -13,7 +13,7 @@ session_start();
          
               require_once "connect.php";
                 $conn = @new mysqli($host, $db_user, $db_password, $db_name);
-
+                
                 if($conn->connect_errno!=0){
                     header("Location: petent.php?alert=4");//nie laczy z baza
                 }
@@ -103,8 +103,15 @@ session_start();
                     }
                     echo '<h1>Załączone pliki:</h1>';
                 }
+         
+         //zmieniamy etap rekrutacji na 1 po wypelnieniu formularza przez petenta 
+         
+             $sql = "UPDATE podanie u SET etap_rekrutacji = '1'  WHERE u.id_uzytkownika='".$_SESSION['id_uzytkownika']."';";
+                  $conn->close();
+
+         
          ?>
-        <a href="podglad_decyzji.php" class="przycisk" style="text-decoration: none;">DALEJ</a> 
+    <a href="podglad_decyzji.php" class="przycisk" style="text-decoration: none;">DALEJ</a>
          
         </div>
          

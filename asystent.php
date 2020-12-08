@@ -24,10 +24,11 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
             <div> 
             <table>
                 <tr>
-                    <th>Company</th>
-                    <th>Contact</th>
-                    <th>Country</th>
+                    <th>Login</th>
+                    <th>Identyfikator</th>
+                    <th>Typ użytkownika</th>
                     <th>Podgląd</th>
+                    <th>Wyślij zaproszenie na rozmowę</th>
                 </tr>
               
             <?php 
@@ -47,6 +48,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                                 <td>'.$obj->id_uzytkownika.'</td>
                                 <td>'.$obj->typ_uzytkownika.'</td>   
                                 <td><a href="asystent_przeglad_podan.php?uzytkownik='.$obj->id_uzytkownika.'">edytuj</a></td>
+                                <td><a href = zaproszenie_do_rozmowy.php?uzytkownik='.$obj->id_uzytkownika.'>Zaproś!</a></td>
                         </tr>';
             
                     
@@ -57,41 +59,13 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                 $conn -> close();
               ?>
                       
-                        
-          
-                
+                         
             </table>
             </div>
-<!-- test pobierania z bazy -->
+            <br>
+
           <?php
-            require_once "connect.php";
-            $conn = @new mysqli($host, $db_user, $db_password, $db_name);
-                   
-            if($conn->connect_errno!=0){
-                 header("Location: index.php?alert=4");//nie laczy z baza
-                }  
-             else{
-                    $sql = "SELECT nazwa_uzytkownika FROM uzytkownik WHERE typ_uzytkownika='petent'";
-                  if ($result = mysqli_query($conn, $sql)) {
-                    while ($obj = mysqli_fetch_object($result)) {
-                        
-                  echo '<a href="asystent_przeglad_podan.php">
-                  '.$obj->nazwa_uzytkownika.' <br><br> </a>';
-                   
-                    
-                    
-                    
-                 //ebe   
-                    
-                    
-                    
-                    
-                    
     
-                    }
-                  }
-                 }
-                $conn -> close();
                 echo '<a  href="wylogowywanie.php" style="text-decoration: none; "> <input  type="submit"  value="Wyloguj"> </a>';
             ?>  
                  
