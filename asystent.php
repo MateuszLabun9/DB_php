@@ -28,19 +28,23 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                     <th>Identyfikator</th>
                     <th>Typ użytkownika</th>
                     <th>Podgląd</th>
-                    <th>Wyślij zaproszenie na rozmowę</th>
+                    <th>Zaproszenie</th>
+                    <th>Akceptacja po rozmowie </th>
+                    <th>Odrzuć rekruta</th>
                 </tr>
               
             <?php 
                     require_once "connect.php";
             $conn = @new mysqli($host, $db_user, $db_password, $db_name);
-                   
+                 
             if($conn->connect_errno!=0){
                  header("Location: index.php?alert=4");//nie laczy z baza
                 }  
              else{
-                    $sql = "SELECT * FROM uzytkownik WHERE typ_uzytkownika='petent'";
+                    $sql = "SELECT uzytkownik.typ_uzytkownika, uzytkownik.id_uzytkownika, uzytkownik.nazwa_uzytkownika, podanie.etap_rekrutacji FROM uzytkownik JOIN podanie ON uzytkownik.id_uzytkownika=podanie.id_uzytkownika";
+                    
                   if ($result = mysqli_query($conn, $sql)) {
+                      
                     while ($obj = mysqli_fetch_object($result)) {
                         
                   echo '<tr>
@@ -48,12 +52,43 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                                 <td>'.$obj->id_uzytkownika.'</td>
                                 <td>'.$obj->typ_uzytkownika.'</td>   
                                 <td><a href="asystent_przeglad_podan.php?uzytkownik='.$obj->id_uzytkownika.'">edytuj</a></td>
-                                <td><a href = zaproszenie_do_rozmowy.php?uzytkownik='.$obj->id_uzytkownika.'>Zaproś!</a></td>
-                        </tr>';
-            
-                    
+                                 <td>';
+                                
+                          if($obj->etap_rekrutacji==1)  {     
+                  echo      '<a href = zaproszenie_do_rozmowy.php?uzytkownik='.$obj->id_uzytkownika.'>Wyślij zaproszenie!</a>';
+                                
+                          }
+                                
+                    echo'       </td>    
+                             
+                                <td>';
+                        
+                                if($obj->etap_rekrutacji==3){
+                                  
+                                    echo  '<button name="update1" value="'.$obj->id_uzytkownika.'">Wyślij do kierownika</button>';
+                                
+                                    }
+                        
+                    echo '</td>';       
+                    echo     '  <form method="POST">
+                                <td><button name="update" value="'.$obj->id_uzytkownika.'">Usuń</button>
+                                </form>
+                                </tr>';
+                       
+                        
                     }
-                      
+                       if(isset($_POST['update'])) // when click on Update button
+                                {
+                             $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '6' WHERE u.id_uzytkownika=".$_POST['update'].";");
+                             if ($conn->query($edit) === TRUE) {}
+                            
+                                }
+                       if(isset($_POST['update1'])) // when click on Update button
+                                {
+                             $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '4' WHERE u.id_uzytkownika=".$_POST['update1'].";");
+                             if ($conn->query($edit) === TRUE) {}
+                            
+                                }
                   }
                  }
                 $conn -> close();
@@ -70,5 +105,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
             ?>  
                  
             </div>
+    
+   
     </body>
 </html> 
