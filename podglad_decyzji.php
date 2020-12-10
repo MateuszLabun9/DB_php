@@ -56,14 +56,14 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                                 
                                  echo '<form method="POST"><button name="update"  value="'.$_SESSION['id_uzytkownika'].'">Akceptuje</button></form></br>
                                  
-                                 <form method="POST"><button name="update1" value="'.$_SESSION['id_uzytkownika'].'">Odrzucam</button></form>';
+                                 <form method="POST"><button  name="update1" value="'.$_SESSION['id_uzytkownika'].'">Odrzucam</button></form>';
                                 
                             }
                              else if ($row['etap_rekrutacji'] == 6){
                                 
                                 echo '<a>Dziękujemy za poświęcony czas. Czy chcesz zachować swój formularz w systemie? Może on zostać wykorzystany w przyszłych rekrutacjach.</a><br><br>';
                                 
-                                 echo '<form method="POST"><button name="update2"  value="'.$_SESSION['id_uzytkownika'].'">Zostawiam dane</button></form></br>
+                                 echo '<form method="POST"><button   name="update2"  value="'.$_SESSION['id_uzytkownika'].'">Zostawiam dane</button></form></br>
                                  
                                  <form method="POST"><button name="update3" value="'.$_SESSION['id_uzytkownika'].'">Usuwam dane</button></form>';
                                 

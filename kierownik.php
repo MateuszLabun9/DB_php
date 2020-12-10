@@ -24,10 +24,11 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                                 <br>
                  <table>
                 <tr>
-                    <th>Login</th>
-                    <th>Identyfikator</th>
-                    <th>Typ użytkownika</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
                     <th>Podgląd</th>
+                    <th>Ocena rekrutera</th>
+                    <th>Opinia rekrutera</th>
                     <th>Zatrudnij</th>
                     <th>Odrzuć rekruta</th>
                 </tr>
@@ -40,20 +41,20 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                  header("Location: index.php?alert=4");//nie laczy z baza
                 }  
              else{
-                    $sql = "SELECT uzytkownik.typ_uzytkownika, uzytkownik.id_uzytkownika, uzytkownik.nazwa_uzytkownika, podanie.etap_rekrutacji FROM uzytkownik JOIN podanie ON uzytkownik.id_uzytkownika=podanie.id_uzytkownika";
+                    $sql = "SELECT uzytkownik.typ_uzytkownika, uzytkownik.id_uzytkownika, uzytkownik.nazwa_uzytkownika, podanie.etap_rekrutacji, podanie.ocena_rekruta, podanie.uzasadnienie_decyzji,podanie.imie, podanie.nazwisko FROM uzytkownik JOIN podanie ON uzytkownik.id_uzytkownika=podanie.id_uzytkownika";
                     
                   if ($result = mysqli_query($conn, $sql)) {
                       
                     while ($obj = mysqli_fetch_object($result)) {
-                          if($obj->etap_rekrutacji==4)  { 
+                          if($obj->etap_rekrutacji==4 )  { 
                            echo '<tr>
-                                <td>'.$obj->nazwa_uzytkownika.'</td>
-                                <td>'.$obj->id_uzytkownika.'</td>
-                                <td>'.$obj->typ_uzytkownika.'</td>   
-                                <td><a href="asystent_przeglad_podan.php?uzytkownik='.$obj->id_uzytkownika.'">edytuj</a></td>
+                                <td>'.$obj->imie.'</td>
+                                <td>'.$obj->nazwisko.'</td>   
+                                <td><a href="kierownik_przeglad_podan.php?uzytkownik='.$obj->id_uzytkownika.'">edytuj</a></td>
                                
                                 <form method="POST">
-                              
+                                 <td>'.$obj->ocena_rekruta.'/10</td>
+                                 <td>'.$obj->uzasadnienie_decyzji.'</td>
                                  <td><button name="update1" value="'.$obj->id_uzytkownika.'">Zatrudnij</button></td>
                                 <td><button name="update" value="'.$obj->id_uzytkownika.'">Usuń</button></td>
                                 </form>

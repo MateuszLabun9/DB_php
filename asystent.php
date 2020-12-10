@@ -24,11 +24,12 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
             <div> 
             <table>
                 <tr>
-                    <th>Login</th>
-                    <th>Identyfikator</th>
-                    <th>Typ użytkownika</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
                     <th>Podgląd</th>
                     <th>Zaproszenie</th>
+                    <th>Ocena petenta</th>
+                    <th>Opinia</th>
                     <th>Akceptacja po rozmowie </th>
                     <th>Odrzuć rekruta</th>
                 </tr>
@@ -41,42 +42,80 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                  header("Location: index.php?alert=4");//nie laczy z baza
                 }  
              else{
-                    $sql = "SELECT uzytkownik.typ_uzytkownika, uzytkownik.id_uzytkownika, uzytkownik.nazwa_uzytkownika, podanie.etap_rekrutacji FROM uzytkownik JOIN podanie ON uzytkownik.id_uzytkownika=podanie.id_uzytkownika";
+                    $sql = "SELECT uzytkownik.typ_uzytkownika, uzytkownik.id_uzytkownika, uzytkownik.nazwa_uzytkownika, podanie.etap_rekrutacji, podanie.ocena_rekruta, podanie.nazwisko, podanie.imie FROM uzytkownik JOIN podanie ON uzytkownik.id_uzytkownika=podanie.id_uzytkownika";
                     
                   if ($result = mysqli_query($conn, $sql)) {
                       
                     while ($obj = mysqli_fetch_object($result)) {
-                        
-                  echo '<tr>
-                                <td>'.$obj->nazwa_uzytkownika.'</td>
-                                <td>'.$obj->id_uzytkownika.'</td>
-                                <td>'.$obj->typ_uzytkownika.'</td>   
-                                <td><a href="asystent_przeglad_podan.php?uzytkownik='.$obj->id_uzytkownika.'">edytuj</a></td>
+                 //tabela z odpowiednimi przyciskami etc.       
+                  echo     '<tr>
+                                
+                                <td>'.$obj->imie.'</td>
+                                
+                                <td>'.$obj->nazwisko.'</td>
+                                
+                                
+                                
+                                <td><a href="asystent_przeglad_podan.php?uzytkownik='.$obj->id_uzytkownika.'">Formularz</a></td>
+                                
                                  <td>';
                                 
-                          if($obj->etap_rekrutacji==1)  {     
-                  echo      '<a href = zaproszenie_do_rozmowy.php?uzytkownik='.$obj->id_uzytkownika.'>Wyślij zaproszenie!</a>';
+                                    if($obj->etap_rekrutacji==1)  {     
+                                        echo '<a href = zaproszenie_do_rozmowy.php?uzytkownik='.$obj->id_uzytkownika.'>Wyślij zaproszenie!</a>';
+                                }
                                 
-                          }
-                                
-                    echo'       </td>    
-                             
-                                <td>';
-                        
-                                if($obj->etap_rekrutacji==3){
-                                  
-                                    echo  '<button name="update1" value="'.$obj->id_uzytkownika.'">Wyślij do kierownika</button>';
-                                
+                            echo '</td>';    
+                            echo '<td>'; 
+                                    if($obj->etap_rekrutacji==3 ){
+                                          echo  '<form method="POST">  <center> <select name="Ocena" id="znacznik_select1">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                                </select></center>
+                                                <button name="update2" value="'.$obj->id_uzytkownika.'">Zaktualizuj ocenę</button></form>';
                                     }
+                        echo '</td>';
                         
-                    echo '</td>';       
+                        echo '<td>';
+                                if ($obj->etap_rekrutacji==3){
+                                    
+                                    echo '<form method="POST">
+                                    <input type="text1" name="Opinia" placeholder="Twoja opinia">
+                                    <button name="update3" value="'.$obj->id_uzytkownika.'">Zatwierdź</button>
+                                    </form>';
+                                        
+                                    
+                                }
+                        
+                        
+                        
+                        echo '</td>';
+                            echo  '<td>';
+                        
+                                    if($obj->etap_rekrutacji==3 && $obj->ocena_rekruta != 0){
+                                    
+                                    echo  '<form method="POST"><button name="update1" value="'.$obj->id_uzytkownika.'">Wyślij do kierownika</button></form>';
+                                        }
+                        
+                            echo '</td>';      
+                        
                     echo     '  <form method="POST">
                                 <td><button name="update" value="'.$obj->id_uzytkownika.'">Usuń</button>
                                 </form>
-                                </tr>';
+                                
+                    
+                        </tr>';
                        
-                        
+                    
                     }
+                      
                        if(isset($_POST['update'])) // when click on Update button
                                 {
                              $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '6' WHERE u.id_uzytkownika=".$_POST['update'].";");
@@ -88,6 +127,17 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                              $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '4' WHERE u.id_uzytkownika=".$_POST['update1'].";");
                              if ($conn->query($edit) === TRUE) {}
                             
+                                }
+                          if(isset($_POST['update2'])) // when click on Update button
+                                {
+                             $edit = mysqli_query($conn, "UPDATE podanie u SET ocena_rekruta = ".$_POST['Ocena']." WHERE u.id_uzytkownika=".$_POST['update2'].";");
+                             if ($conn->query($edit) === TRUE) {}
+                          }
+                       if(isset($_POST['update3'])) // when click on Update button
+                                {
+                             
+                             $edit = mysqli_query($conn, "UPDATE podanie SET uzasadnienie_decyzji = '".$_POST['Opinia']."' WHERE id_uzytkownika=".$_POST['update3'].";");
+                             if ($conn->query($edit) === TRUE) {}
                                 }
                   }
                  }

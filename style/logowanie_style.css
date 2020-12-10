@@ -140,3 +140,17 @@ h2{
     padding: 1%;
     margin-bottom: 0.5%;
 }
+
+#znacznik_select1{
+    color: #757580;
+    background-color: #efefef;
+    width: 8.3%;
+    font-size:20px;
+    border-radius: 5px;
+    border-color: #dddddd;
+    border-width: 2px;
+    padding: 1%;
+    margin-bottom: 5%;
+   
+  
+}
