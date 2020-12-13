@@ -2,5 +2,5 @@
 $host = 'localhost';
 $db_user = 'root';
 $db_password = '';
-$db_name = 'BDBMM';
+$db_name = 'BDBMM1';
 ?>

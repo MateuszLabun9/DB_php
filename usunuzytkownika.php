@@ -20,6 +20,10 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
       <h1>Usuwanie konta</h1>
      <div id="container">   
          
+         <?php
+         
+         ?>
+         
         <form action="usuwaj.php" method="post">
             <p class="test"> Potwierdź usuwanie konta hasłem<br></p>
             <input type="password" name="haslo" placeholder="Potwierdź hasło"><br>

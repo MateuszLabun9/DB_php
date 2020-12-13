@@ -68,13 +68,13 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                                 {
                              $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '6' WHERE u.id_uzytkownika=".$_POST['update'].";");
                              if ($conn->query($edit) === TRUE) {}
-                            
+                            header("Refresh:0");
                                 }
                      if(isset($_POST['update1'])) // when click on Update button
                                 {
                              $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '5' WHERE u.id_uzytkownika=".$_POST['update1'].";");
                              if ($conn->query($edit) === TRUE) {}
-                  
+                            header("Refresh:0");
                             }
                       $conn -> close();
                     ;?>

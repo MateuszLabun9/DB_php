@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SESSION['typ_uzytkownika']!='petent'){
+if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) || $_SESSION['typ_uzytkownika']!='petent'){
     session_unset();
     session_destroy();
     header("Location: index.php?alert=1");

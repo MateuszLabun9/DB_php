@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SESSION['typ_uzytkownika']!='petent'){
+if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) || $_SESSION['typ_uzytkownika']!='asystent'){
     session_unset();
     session_destroy();
     header("Location: index.php?alert=1");
@@ -63,6 +63,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                                     if($obj->etap_rekrutacji==1)  {     
                                         echo '<a href = zaproszenie_do_rozmowy.php?uzytkownik='.$obj->id_uzytkownika.'>Wyślij zaproszenie!</a>';
                                 }
+                                else if($obj->etap_rekrutacji==2) echo 'Wysłano';
                                 
                             echo '</td>';    
                             echo '<td>'; 
@@ -106,13 +107,16 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                         
                             echo '</td>';      
                         
-                    echo     '  <form method="POST">
-                                <td><button name="update" value="'.$obj->id_uzytkownika.'">Usuń</button>
+                    
+                        if($obj->etap_rekrutacji == 8) echo '<td>Zachowano dla przyszłych rekrutacji</td></tr>';
+                        else{
+                        echo   '  <form method="POST">
+                                <td><button name="update" value="'.$obj->id_uzytkownika.'">Usuń</button></td>
                                 </form>
                                 
                     
                         </tr>';
-                       
+                       }
                     
                     }
                       

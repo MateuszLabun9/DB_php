@@ -102,6 +102,17 @@ session_start();
                         }
                     }
                     echo '<h1>Załączone pliki:</h1>';
+                    $sql = "SELECT * FROM zalaczone_dokumenty WHERE id_uzytkownika='".$_SESSION['id_uzytkownika']."';";
+                    if($result = @$conn->query($sql)){
+                        $users = $result->num_rows;
+                        if($users>0){
+                            echo '<p>Załączone pliki:</p>';
+                            while ($obj = mysqli_fetch_object($result)) {
+                                echo '<a href="download.php?val='.$obj->nazwa_pliku.'" target="_blank">'.$obj->nazwa_pliku.'</a><br>';
+                            }
+                        }
+                     }
+                    echo '<br>';
                 }
          
          //zmieniamy etap rekrutacji na 1 po wypelnieniu formularza przez petenta 

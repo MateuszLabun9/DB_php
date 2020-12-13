@@ -33,8 +33,13 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                         if($podania>0){
                             $row = $result->fetch_assoc();
                           
-                           if ($row['etap_rekrutacji'] == 1) echo '<a>Twój formularz został pomyślnie zapisan w bazie.</a><br><br>';
+                           if ($row['etap_rekrutacji'] == 1) echo '<a>Twój formularz został pomyślnie zapisany w bazie.</a><br><br>';
                             
+                            else if ($row['etap_rekrutacji'] == NULL) {
+                                $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '1' WHERE u.id_uzytkownika=".$_SESSION['id_uzytkownika'].";");
+                                if ($conn->query($edit) === TRUE) {}
+                                header("Refresh:0");
+                            }
                             else if ($row['etap_rekrutacji'] == 2) {
                                 
                                 echo '<a>Gratulacje! zostałeś zaproszony na rozmowę kwalifikacyjną </a><br><br>';
@@ -68,31 +73,50 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                                  <form method="POST"><button name="update3" value="'.$_SESSION['id_uzytkownika'].'">Usuwam dane</button></form>';
                                 
                             }
+                            else if ($row['etap_rekrutacji'] == 7){
+                                
+                                echo '<a>Gratulacje! Wkrótce skontaktuje się z Tobą osoba z działu HR w celu omówienia szczegółów rozpoczęcia pracy.</a><br><br>';
+                                echo '<a class="przycisk"  href="wylogowywanie.php" >Wyloguj</a>';
+                                
+                            }
+                            else if ($row['etap_rekrutacji'] == 8){
+                                
+                                echo '<a>Zapisano podanie dla przyszłych rekrutacji, możesz się wylogować.</a><br><br>';
+                                echo '<a class="przycisk"  href="wylogowywanie.php" >Wyloguj</a>';
+                                
+                            }
                                 
                               if(isset($_POST['update'])) // when click on Update button
                                 {
-                             $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '7' WHERE u.id_uzytkownika=".$_POST['update'].";");
+                             $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '7', zatrudniono = '1'  WHERE u.id_uzytkownika=".$_POST['update'].";");
                              if ($conn->query($edit) === TRUE) {}
-                            
+                            header("Refresh:0");
                                 }
                             if(isset($_POST['update1'])) // when click on Update button
                                 {
-                             $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '6' WHERE u.id_uzytkownika=".$_POST['update1'].";");
+                             $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '6', zatrudniono = '0' WHERE u.id_uzytkownika=".$_POST['update1'].";");
                              if ($conn->query($edit) === TRUE) {}
-                            
+                            header("Refresh:0");
                                 }
-                               if(isset($_POST['update2'])) // when click on Update button
+                               if(isset($_POST['update2'])) // odrzucony ale zostawil podanie
                                 {
-                             $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '1' WHERE u.id_uzytkownika=".$_POST['update2'].";");
+                             $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '8' WHERE u.id_uzytkownika=".$_POST['update2'].";");
                              if ($conn->query($edit) === TRUE) {}
-                            
+                            header("Refresh:0");
                                 }
-                            if(isset($_POST['update3'])) // when click on Update button
+                            if(isset($_POST['update3'])) // odrzucony i usuwa dane
                                 {
-                                //jeżeli chcemy faktycznie usuwać dane to trzeba zmienic zapytanie na dropa
-                             $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '0' WHERE u.id_uzytkownika=".$_POST['update3'].";");
-                             if ($conn->query($edit) === TRUE) {}
-                            
+                            $edit = mysqli_query($conn, "DELETE FROM doswiadczenie WHERE id_uzytkownika=".$_POST['update3'].";");
+                            if ($conn->query($edit) === TRUE) {}
+                            $edit = mysqli_query($conn, "DELETE FROM szkolenia WHERE id_uzytkownika=".$_POST['update3'].";");
+                            if ($conn->query($edit) === TRUE) {}
+                            $edit = mysqli_query($conn, "DELETE FROM umiejetnosci WHERE id_uzytkownika=".$_POST['update3'].";");
+                            if ($conn->query($edit) === TRUE) {}
+                            $edit = mysqli_query($conn, "DELETE FROM wyksztalcenie WHERE id_uzytkownika=".$_POST['update3'].";");
+                            if ($conn->query($edit) === TRUE) {}
+                            $edit = mysqli_query($conn, "DELETE FROM podanie WHERE id_uzytkownika=".$_POST['update3'].";");
+                            if ($conn->query($edit) === TRUE) {}
+                            header("Refresh:0");
                                 }
                         }
                         

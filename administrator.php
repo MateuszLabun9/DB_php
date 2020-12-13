@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SESSION['typ_uzytkownika']!='petent'){
+if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) || $_SESSION['typ_uzytkownika']!='administrator'){
     session_unset();
     session_destroy();
     header("Location: index.php?alert=1");
@@ -20,7 +20,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                 </div>
             <!-- zawartość strony sam tekst --> 
                 <p class="test">W celu dokonywania zmian w Bazie Danych kliknij w przycisk:</p>
-                <a href="phpmyadmin" style="text-decoration: none;"><input  type="submit" value="Baza Danych"></a> 
+                <a href="http://localhost/phpmyadmin" style="text-decoration: none;"><input  type="submit" value="Baza Danych"></a> 
                  <p class="test">W celu przeglądania informacji PHP:</p>
                 <a href=phpinfo.php style="text-decoration: none;"><input  type="submit" value="PHP Info"></a> 
                 <br>
