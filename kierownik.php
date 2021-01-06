@@ -81,6 +81,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                 </table> <br> 
                 <?php 
                   echo '<a  href="wylogowywanie.php" style="text-decoration: none; "> <input  type="submit"  value="Wyloguj"> </a>';
+                  echo '<a  href="raport.php" style="text-decoration: none; "> <input  type="submit"  value="Generuj raport"> </a>';
                 ?>
             </div>
     </body>
