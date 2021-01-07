@@ -8,19 +8,32 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
 ?>
 <!doctype html>
 <html>
+    <head>
+        <link rel="stylesheet" href="style/style_glowny.css" type="text/css" />
+        <style>
+            @media print {
+            .noPrint{
+                display:none;
+                }
+            }
+            #container{
+                padding: 1%;
+            }
+            h1{
+                margin-top: 2%;
+            }
+        </style>
+    </head>
+    
     <body>
-         <h1>System rejestracji podań osób starających się o pracę</h1>
+        <h1>System rejestracji podań osób starających się o pracę</h1>
             <div id="container">
              
-              <link rel="stylesheet" href="style/style_glowny.css" type="text/css" />
+              
    
                 <!--to ciągnie z bazy -->
-                <div id="test">
-                    <?php echo "<a> Witaj ".$_SESSION['nazwa_uzytkownika']."!  Pomyślnie zalogowałeś się na swoje konto. </a>"; ?>
-                </div>
             <!-- zawartość strony sam tekst --> 
-              
-                <br>             
+                    
                      
                  <?php 
                     require_once "connect.php";
@@ -332,7 +345,8 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                     ;?>
                 <br> 
                 <?php 
-                  echo '<a  href="kierownik.php" style="text-decoration: none; "> <input  type="submit"  value="Powrót"> </a>';
+                  echo '<a class="noPrint" href="" style="text-decoration: none; " onclick="window.print();"> <input  type="submit"  value="Pobierz PDF"> </a>';
+                  echo '<a class="noPrint"  href="kierownik.php" style="text-decoration: none; "> <input  type="submit"  value="Powrót"> </a>';
             
                 ?>
             </div>
