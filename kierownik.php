@@ -14,11 +14,9 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
              
               <link rel="stylesheet" href="style/style_glowny.css" type="text/css" />
    
-                <!--to ciągnie z bazy -->
                 <div id="test">
                     <?php echo "<a> Witaj ".$_SESSION['nazwa_uzytkownika']."!  Pomyślnie zalogowałeś się na swoje konto. </a>"; ?>
                 </div>
-            <!-- zawartość strony sam tekst --> 
                 <p class="test"> Tutaj znajduje się lista podań do decyzji:</p>
                 
                                 <br>
@@ -64,13 +62,13 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                   }
              }
                
-                      if(isset($_POST['update'])) // when click on Update button
+                      if(isset($_POST['update']))
                                 {
                              $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '6' WHERE u.id_uzytkownika=".$_POST['update'].";");
                              if ($conn->query($edit) === TRUE) {}
                             header("Refresh:0");
                                 }
-                     if(isset($_POST['update1'])) // when click on Update button
+                     if(isset($_POST['update1'])) 
                                 {
                              $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '5' WHERE u.id_uzytkownika=".$_POST['update1'].";");
                              if ($conn->query($edit) === TRUE) {}

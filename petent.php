@@ -18,11 +18,9 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) || $_SES
          <h1>System rejestracji podań osób starających się o pracę</h1>
             <div id="container">
 
-                <!--to ciągnie z bazy -->
                 <div id="test">
                     <?php echo "<p> Witaj ".$_SESSION['nazwa_uzytkownika']."!  Pomyślnie zalogowałeś się na swoje konto. </p>"; ?>
                 </div>
-            <!-- zawartość strony sam tekst --> 
                 <p class="test"> W następnych etapach będziesz poproszony o uzupełnienie danych takich jak:</p>
                 <div class="parent">
                         <ul>

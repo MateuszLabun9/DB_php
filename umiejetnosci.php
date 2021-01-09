@@ -17,7 +17,7 @@ class Umiejetnosci{
         else{
             $sql = "INSERT INTO umiejetnosci (klucz_umiejetnosci, id_uzytkownika, nazwa_umiejetnosci, poziom_umiejetnosci) VALUES (NULL, '".$id_uzytownika."', '".$nazwa_umiejetnosci."', '".$poziom_umiejetnosci."');";
             if($conn->query($sql) === TRUE){
-                header("Location: form_umiejetnosci.php");//dodano wyksztalcenie
+                header("Location: form_umiejetnosci.php");//dodano umijetnosci
             }
             else{
                 header("Location: form_umiejetnosci.php?alert=3");//blad obslugi zapytania

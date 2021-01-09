@@ -14,7 +14,7 @@
               <label onclick="tekst()" for="label"> DODAJ PLIK</label>  
               <span  id="file-chosen"></span>
               <br>
-              <!-- tutaj trzeba dodać php by przesłać plik do sql -->
+              
               <input type="submit" name="submit" value="PRZEŚLIJ" >
               <br>
               <br>

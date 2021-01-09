@@ -17,7 +17,7 @@ class Szkolenia{
         else{
             $sql = "INSERT INTO szkolenia (klucz_szkolenia, id_uzytkownika, nazwa_szkolenia, rok_rozp_s) VALUES (NULL, '".$id_uzytownika."', '".$nazwa_szkolenia."', '".$rok_rozp_s."');";
             if($conn->query($sql) === TRUE){
-                header("Location: form_szkolenia.php");//dodano wyksztalcenie
+                header("Location: form_szkolenia.php");//dodano szkolenie
             }
             else{
                 header("Location: form_szkolenia.php?alert=3");//blad obslugi zapytania

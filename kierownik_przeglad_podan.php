@@ -21,7 +21,6 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
                     
                 }
                 else{
-                    //tu połączyć się z bazą i pobrać co tam bedziesz potrzebował z BD
                    
                     require_once "connect.php";
                  $conn = @new mysqli($host, $db_user, $db_password, $db_name);

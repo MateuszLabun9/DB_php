@@ -14,11 +14,9 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) || $_SES
              
               <link rel="stylesheet" href="style/style_glowny.css" type="text/css" />
    
-                <!--to ciągnie z bazy -->
                 <div id="test">
                     <?php echo "<a> Witaj ".$_SESSION['nazwa_uzytkownika']."!  Pomyślnie zalogowałeś się na swoje konto. </a>"; ?>
                 </div>
-            <!-- zawartość strony sam tekst --> 
                 <p class="test">W celu dokonywania zmian w Bazie Danych kliknij w przycisk:</p>
                 <a href="http://localhost/phpmyadmin" style="text-decoration: none;"><input  type="submit" value="Baza Danych"></a> 
                  <p class="test">W celu przeglądania informacji PHP:</p>

@@ -32,8 +32,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
              $sql = "UPDATE podanie u SET etap_rekrutacji = '3'  WHERE u.id_uzytkownika='".$_SESSION['id_uzytkownika']."';";
                
             echo '<a> Rekruter wkrótce się z tobą skontaktuje. Prosimy o cierpliwość.</a>';
-            
-       //nie usuwać bo przestanie działac xD     
+               
             if ($conn->query($sql) === TRUE) {}
                 $conn->close();
                 

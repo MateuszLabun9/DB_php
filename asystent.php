@@ -14,11 +14,9 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) || $_SES
 <body>
     <h1>System rejestracji podań osób starających się o pracę</h1>
         <div id="container">
-            <!--to ciągnie z bazy -->
             <div id="test">
                 <?php echo "<a> Witaj ".$_SESSION['nazwa_uzytkownika']."!  Pomyślnie zalogowałeś się na swoje konto. </a>"; ?>        
             </div>
-            <!-- zawartość strony sam tekst --> 
                 <p class="test"> Tutaj znajduje się lista podań do zweryfikowania:</p>
             <br>
             <div> 
@@ -47,7 +45,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) || $_SES
                   if ($result = mysqli_query($conn, $sql)) {
                       
                     while ($obj = mysqli_fetch_object($result)) {
-                 //tabela z odpowiednimi przyciskami etc.       
+                 //tabela z odpowiednimi przyciskami     
                   echo     '<tr>
                                 
                                 <td>'.$obj->imie.'</td>
@@ -120,24 +118,24 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) || $_SES
                     
                     }
                       
-                       if(isset($_POST['update'])) // when click on Update button
+                       if(isset($_POST['update'])) 
                                 {
                              $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '6' WHERE u.id_uzytkownika=".$_POST['update'].";");
                              if ($conn->query($edit) === TRUE) {}
                             
                                 }
-                       if(isset($_POST['update1'])) // when click on Update button
+                       if(isset($_POST['update1'])) 
                                 {
                              $edit = mysqli_query($conn, "UPDATE podanie u SET etap_rekrutacji = '4' WHERE u.id_uzytkownika=".$_POST['update1'].";");
                              if ($conn->query($edit) === TRUE) {}
                             
                                 }
-                          if(isset($_POST['update2'])) // when click on Update button
+                          if(isset($_POST['update2']))
                                 {
                              $edit = mysqli_query($conn, "UPDATE podanie u SET ocena_rekruta = ".$_POST['Ocena']." WHERE u.id_uzytkownika=".$_POST['update2'].";");
                              if ($conn->query($edit) === TRUE) {}
                           }
-                       if(isset($_POST['update3'])) // when click on Update button
+                       if(isset($_POST['update3'])) 
                                 {
                              
                              $edit = mysqli_query($conn, "UPDATE podanie SET uzasadnienie_decyzji = '".$_POST['Opinia']."' WHERE id_uzytkownika=".$_POST['update3'].";");

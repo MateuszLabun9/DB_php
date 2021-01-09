@@ -14,21 +14,12 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
 <body>
     <h1>System rejestracji podań osób starających się o pracę</h1>
         <div id="container">
-            <!--to ciągnie z bazy -->
-            <div id="test">
-               
-                
-            
-                
-                    
+
+            <div id="test">         
             </div>
-            <!-- zawartość strony sam tekst --> 
+
            
             <br>
-           
-
-              
-              
             <?php 
                     require_once "connect.php";
             $conn = @new mysqli($host, $db_user, $db_password, $db_name);
@@ -49,8 +40,7 @@ if(!isset($_SESSION['nazwa_uzytkownika'], $_SESSION['typ_uzytkownika']) && $_SES
              $sql = "UPDATE podanie u SET etap_rekrutacji = '2'  WHERE u.id_uzytkownika='".$_GET['uzytkownik']."';";
                
             
-            
-       //nie usuwać bo przestanie działac xD     
+             
             if ($conn->query($sql) === TRUE) {}
 $conn->close();
                 
