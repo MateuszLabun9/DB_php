@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 07 Sty 2021, 20:00
--- Wersja serwera: 10.4.8-MariaDB
--- Wersja PHP: 7.3.11
+-- Czas generowania: 09 Sty 2021, 12:24
+-- Wersja serwera: 10.4.14-MariaDB
+-- Wersja PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -133,10 +132,10 @@ CREATE TABLE `umiejetnosci` (
 --
 
 INSERT INTO `umiejetnosci` (`klucz_umiejetnosci`, `id_uzytkownika`, `nazwa_umiejetnosci`, `poziom_umiejetnosci`) VALUES
-(3, 2, 'sprzatanie', 'do blysku'),
-(5, 4, 'gotowanie', 'masterszef'),
-(6, 11, 'mycie szyb', 'bez smug'),
-(9, 10, 'wiercenie', '5'),
+(3, 2, 'Znajomość prawa', '2'),
+(5, 4, 'Gotowanie', '4'),
+(6, 11, 'Pisanie', '3'),
+(9, 10, 'Malowanie ścian', '5'),
 (10, 23, 'Programowanie w C', '4'),
 (11, 23, 'Umiejętności interpersonalne', '5'),
 (12, 23, 'Znajomość wzorców projektowych', '4'),
@@ -277,7 +276,7 @@ ALTER TABLE `zalaczone_dokumenty`
   ADD KEY `id_uzytkownika` (`id_uzytkownika`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT dla zrzuconych tabel
 --
 
 --
